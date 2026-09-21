@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#070b24">
+  <title>Nexora Games</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">N</div>
+        <div>
+          <strong>Nexora <span>Games</span></strong>
+          <small>Play • Win • Earn</small>
+        </div>
+      </div>
+      <button class="icon-btn" id="notifyBtn" aria-label="Notifications">🔔</button>
+    </header>
+
+    <main id="app">
+      <section id="home" class="page active">
+        <div class="hero-card">
+          <div>
+            <span class="eyebrow">NEXORA ARCADE</span>
+            <h1>Real Games.<br><span>Real Rewards.</span></h1>
+            <p>Pick a game, make your choice and play.</p>
+          </div>
+          <div class="hero-art">🎮</div>
+        </div>
+
+        <div class="asset-strip">
+          <div class="mini-balance"><span>₦ NGN</span><b id="ngnBalance">—</b></div>
+          <div class="mini-balance usdt"><span>₮ USDT</span><b id="usdtBalance">—</b></div>
+        </div>
+
+        <div class="section-head"><h2>Games</h2><span>Play now</span></div>
+        <div class="game-list">
+          <button class="game-card" data-open-game="number">
+            <div class="game-icon pink">🔢</div>
+            <div><h3>Number Guess</h3><p>Choose Even or Odd and pick 3 numbers.</p></div>
+            <b>›</b>
+          </button>
+          <button class="game-card" data-open-game="coin">
+            <div class="game-icon gold">🪙</div>
+            <div><h3>Coin Flip</h3><p>Choose Head or Tail and flip.</p></div>
+            <b>›</b>
+          </button>
+          <button class="game-card" data-open-game="spin">
+            <div class="game-icon blue">🎡</div>
+            <div><h3>Lucky Spin</h3><p>Spin for a randomized reward.</p></div>
+            <b>›</b>
+          </button>
+        </div>
+      </section>
+
+      <section id="game-number" class="page game-page">
+        <button class="back-btn" data-home>‹ Back</button>
+        <div class="game-title"><div class="big-icon">🔢</div><h2>Number Guess</h2><p>Choose a side, then pick exactly 3 numbers from 2–50.</p></div>
+        <div class="choice-row">
+          <button class="side-choice even" data-side="even"><span>✓</span><b>EVEN</b><small>Even numbers</small></button>
+          <button class="side-choice odd" data-side="odd"><span>○</span><b>ODD</b><small>Odd numbers</small></button>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><b>Pick 3 Numbers</b><span id="numberCount">0 / 3</span></div>
+          <div class="number-grid" id="numberGrid"></div>
+        </div>
+        <div class="info-box">🎯 <span>If one of your 3 selected numbers matches a server-generated draw, the configured game reward is credited to your account.</span></div>
+        <button class="primary-btn" id="playNumber" disabled>▶ Play</button>
+        <div id="numberResult" class="result-box hidden"></div>
+      </section>
+
+      <section id="game-coin" class="page game-page">
+        <button class="back-btn" data-home>‹ Back</button>
+        <div class="game-title"><div class="big-icon">🪙</div><h2>Coin Flip</h2><p>Choose Head or Tail, then flip.</p></div>
+        <div class="coin-stage"><div class="coin" id="coin">N</div></div>
+        <div class="choice-row">
+          <button class="side-choice coin-choice" data-coin="head">👑 <b>HEAD</b></button>
+          <button class="side-choice coin-choice" data-coin="tail">🔵 <b>TAIL</b></button>
+        </div>
+        <button class="primary-btn" id="flipCoin" disabled>↻ Flip</button>
+        <div id="coinResult" class="result-box hidden"></div>
+      </section>
+
+      <section id="game-spin" class="page game-page">
+        <button class="back-btn" data-home>‹ Back</button>
+        <div class="game-title"><div class="big-icon">🎡</div><h2>Lucky Spin</h2><p>Spin the wheel for a randomized server result.</p></div>
+        <div class="wheel-wrap"><div class="pointer">▼</div><div class="wheel" id="wheel"><div class="wheel-labels"><span>₦500</span><span>₦100</span><span>₦300</span><span>₦50</span><span>₦1,000</span><span>₦0</span></div><div class="wheel-center">LUCKY<br>SPIN</div></div></div>
+        <button class="primary-btn" id="spinNow">✦ Spin Now</button>
+        <div id="spinResult" class="result-box hidden"></div>
+      </section>
+
+      <section id="referral" class="page">
+        <div class="section-head"><h2>Referral</h2><span>Earn commission</span></div>
+        <div class="ref-card">
+          <span class="eyebrow">YOUR REFERRAL LINK</span>
+          <div class="ref-link" id="refLink">Loading…</div>
+          <div class="two-btns"><button class="secondary-btn" id="copyRef">Copy Link</button><button class="secondary-btn" id="shareRef">Share</button></div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card"><span>Total Referrals</span><b id="refCount">—</b></div>
+          <div class="stat-card"><span>Commission Earned</span><b id="refCommission">—</b></div>
+        </div>
+        <div class="panel">
+          <h3>Commission rules</h3>
+          <p class="muted">Commission rates and qualifying transactions are controlled by the Nexora backend. This screen does not invent referral earnings.</p>
+        </div>
+      </section>
+
+      <section id="assets" class="page">
+        <div class="section-head"><h2>Assets</h2><span>NGN • USDT</span></div>
+        <div class="tabs"><button class="tab active" data-asset="ngn">₦ NGN</button><button class="tab" data-asset="usdt">₮ USDT</button></div>
+        <div class="asset-panel">
+          <div class="asset-balance"><span>Available balance</span><strong id="assetBalance">—</strong></div>
+          <div class="asset-actions">
+            <button data-action="deposit">↥<small>Deposit</small></button>
+            <button data-action="withdraw">↧<small>Withdraw</small></button>
+            <button data-action="history">◷<small>History</small></button>
+          </div>
+        </div>
+        <div id="assetContent" class="panel"></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-page="home">⌂<small>Home</small></button>
+      <button class="nav-btn" data-page="referral">♙<small>Referral</small></button>
+      <button class="nav-btn" data-page="assets">▣<small>Assets</small></button>
+    </nav>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
