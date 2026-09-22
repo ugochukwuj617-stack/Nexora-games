@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="theme-color" content="#050617" />
+  <title>Nexora Games</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="watermark">NEXORA</div>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-logo"><span>N</span><i></i></div>
+      <div><div class="brand-name">Nexora <b>Games</b></div><div class="tagline">Play • Win • Earn</div></div>
+    </div>
+    <div class="top-actions"><button aria-label="Notifications" class="top-icon">♧<em></em></button><button aria-label="Telegram" class="tg">➤</button></div>
+  </header>
+
+  <main>
+    <section class="page active" id="home">
+      <div class="balance-card">
+        <div class="balance-side"><div class="gem">◇</div><div><small>Your Balance</small><strong id="homeNgn">₦ —</strong><span>NGN</span></div></div>
+        <div class="balance-divider"></div>
+        <div class="balance-side"><div class="usdt">₮</div><div><small>USDT</small><strong id="homeUsdt">$ —</strong><span>USDT</span></div></div>
+      </div>
+
+      <div class="hero">
+        <div class="hero-copy"><small>WELCOME TO</small><h1>Nexora <b>Games</b></h1><div class="hero-pills"><span>Play</span><i>•</i><span>Earn</span><i>•</i><span>Withdraw</span></div></div>
+        <div class="hero-character" aria-hidden="true"><div class="jet-ring"></div><div class="jet-guy">🧑🏾‍🚀</div><div class="jet-flame">🔥</div></div>
+        <div class="dots"><b></b><b></b><b></b></div>
+      </div>
+
+      <div class="section-title"><h2><span>🎮</span> Games</h2></div>
+      <div class="game-grid">
+        <article class="game-card lucky" data-game="luckyjet"><div class="game-art lucky-art"><div class="game-name">LUCKY<span>JET</span></div><div class="jet-hero">🧑🏾‍🚀</div><div class="trail">✦ ✧ ✦</div></div><button class="play-btn">▶ Play Now</button></article>
+        <article class="game-card mines" data-game="mines"><div class="game-art mines-art"><div class="game-name">💣 Mines</div><small>Find the mines. Win big!</small><div class="mine-grid"><i>★</i><i></i><i>★</i><i></i><i></i><i>★</i><i></i><i>💣</i><i></i></div></div><button class="play-btn">▶ Play Now</button></article>
+        <article class="game-card coin" data-game="coinflip"><div class="game-art coin-art"><div class="game-name">COIN FLIP</div><div class="coin-big">₦</div><div class="coins">◈　◈　◈</div></div><button class="play-btn">▶ Play Now</button></article>
+      </div>
+
+      <div class="winner-ticker" id="winnerTicker" aria-live="polite"><div class="trophy">🏆</div><div class="winner-avatar">A</div><div><b id="winnerName">Waiting for settled results</b><small id="winnerMeta">Live results appear here</small></div><strong id="winnerAmount">—</strong><div class="refresh">↻</div></div>
+    </section>
+
+    <section class="page" id="invest">
+      <div class="page-heading"><span>💎</span><div><h1>Investment</h1><p>Choose an available plan</p></div></div>
+      <div class="mini-balances"><div><small>NGN</small><b id="investNgn">₦ —</b></div><div><small>USDT</small><b id="investUsdt">$ —</b></div></div>
+      <div class="plan-grid">
+        <article class="plan p1"><span>LEVEL 1</span><h2>Invest $5</h2><b>Return $1</b><small>7 days</small><button data-invest="1">Invest Now</button></article>
+        <article class="plan p2"><span>LEVEL 2</span><h2>Invest $10</h2><b>Return $2</b><small>8 days</small><button data-invest="2">Invest Now</button></article>
+        <article class="plan p3"><span>LEVEL 3</span><h2>Invest $15</h2><b>Return $3</b><small>8 days</small><button data-invest="3">Invest Now</button></article>
+      </div>
+      <div class="notice">Investment eligibility, funding, returns and settlement are controlled by the server. The client cannot create or edit investment balances.</div>
+    </section>
+
+    <section class="page" id="referral">
+      <div class="page-heading"><span>👥</span><div><h1>Referral</h1><p>Invite friends and earn commissions</p></div></div>
+      <div class="ref-card"><small>Your Referral Link</small><div class="ref-link" id="refLink">Loading from account…</div><button id="copyRef">Copy Link</button></div>
+      <div class="stats"><div><small>Total Referrals</small><b id="refCount">—</b></div><div><small>Total Commission</small><b id="refCommission">₦ —</b></div></div>
+      <div class="history"><h3>Commission History</h3><div id="refHistory">No settled commissions yet.</div></div>
+    </section>
+
+    <section class="page" id="assets">
+      <div class="page-heading"><span>👛</span><div><h1>Assets</h1><p id="telegramUser">Telegram account</p></div></div>
+      <div class="asset-card ngn"><small>NGN BALANCE</small><strong id="assetNgn">₦ —</strong><div class="asset-actions"><button data-action="deposit-ngn">Deposit</button><button data-action="withdraw-ngn">Withdraw</button><button data-action="history-ngn">History</button></div></div>
+      <div class="asset-card usdt-card"><small>USDT BALANCE</small><strong id="assetUsdt">$ —</strong><div class="asset-actions"><button data-action="deposit-usdt">Deposit</button><button data-action="withdraw-usdt">Withdraw</button><button data-action="history-usdt">History</button></div></div>
+      <div class="security"><h3>Security</h3><div><span>Identity verification</span><b id="kycStatus">Not verified</b></div><div><span>Two-factor authentication</span><b id="twofaStatus">Not enabled</b></div></div>
+      <div class="history"><h3>Complete Transaction History</h3><div id="assetHistory">No transactions loaded.</div></div>
+    </section>
+
+    <section class="page game-page" id="game-luckyjet">
+      <button class="back" data-back>‹ Back</button><div class="game-top"><b>LUCKY<span>JET</span></b><span class="secure">● SERVER CONTROLLED</span></div>
+      <div class="rounds" id="luckyRounds"></div>
+      <div class="lucky-board"><div class="stars">✦　·　✧　·　✦　·　·　✧</div><div class="multiplier" id="luckyMultiplier">—</div><div class="flight-line"></div><div class="flight-guy">🧑🏾‍🚀</div></div>
+      <div class="bet-panel"><div class="toggles"><label><input type="checkbox" id="autoBet"> Autobet</label><label><input type="checkbox" id="autoCash"> Autowithdrawal</label><b>x2.00</b></div><div class="bet-row"><button data-betminus>−</button><strong id="luckyBet">—</strong><button data-betplus>+</button><button class="bet-submit" id="luckyBetBtn">BET</button></div></div>
+      <div class="live-list"><div class="tabs"><b>All</b><span>My</span><span>Top</span></div><div class="live-row"><span>Secure round feed</span><b>Waiting for server</b></div></div>
+    </section>
+
+    <section class="page game-page" id="game-mines">
+      <button class="back" data-back>‹ Back</button><div class="game-top"><b>💣 MINES</b><span class="secure">● SERVER CONTROLLED</span></div>
+      <div class="mine-board" id="mineBoard"></div>
+      <div class="mine-info"><span>⭐ Max. win</span><b id="mineMax">—</b><span>💣 Traps</span><b id="mineTraps">—</b></div>
+      <div class="mine-bet"><button>−</button><strong id="mineBet">—</strong><button>+</button></div><button class="primary" id="minePlay">PLAY</button>
+      <div class="live-list"><div class="tabs"><b>Live</b><span>My</span></div><div class="live-row">Live settled game feed will come from the backend.</div></div>
+    </section>
+
+    <section class="page game-page" id="game-coinflip">
+      <button class="back" data-back>‹ Back</button><div class="game-top"><b>🪙 COIN FLIP</b><span class="secure">● SERVER CONTROLLED</span></div>
+      <div class="coin-stage"><div class="coin-real" id="coinReal">N</div></div>
+      <div class="coin-history"><span>Previous round</span><b id="coinPrev">—</b></div>
+      <div class="coin-bet"><button>−</button><strong id="coinBet">—</strong><button>+</button></div><div class="coin-choices"><button data-side="heads">HEADS</button><button data-side="tails">TAILS</button></div>
+      <div class="notice">The outcome must be generated and settled by the game server. The browser never decides the winning side.</div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="active" data-nav="home"><span>⌂</span><b>Home</b></button>
+    <button data-nav="invest"><span>↗</span><b>Invest</b></button>
+    <button data-nav="referral"><span>♙</span><b>Referral</b></button>
+    <button data-nav="assets"><span>▣</span><b>Assets</b></button>
+  </nav>
+  <div class="toast" id="toast"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
